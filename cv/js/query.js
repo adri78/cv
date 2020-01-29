@@ -1,0 +1,21 @@
+var MyGlobal={};$(window).load(function(){$('.pie-chart').easyPieChart();$('.magnificPopup-gallery').magnificPopup({type:'image',gallery:{enabled:true}});window.DKCore={local:location.protocol=="file:",basepath:location.pathname.slice(0,location.pathname.lastIndexOf('/')+1),urlpath:location.href.substr(0,location.href.indexOf('/',location.href.indexOf("/")+2)),defState:'',defMobileState:'',defStateMobileText:'Main Page',emptyNavigationText:'-- navigate to --',ajaxFolder:"/ajax/",indexFile:'index.php',modules:{},mobileVersion:true,mobileFolowLinks:false,state:""}
+$(window).scroll(function(){console.log("scrolling");var i=0
+while(map){if(map[i]>=win.scrollTop()){break;}
+i++;}
+if(jQuery(window).scrollTop()==(jQuery(document).height()-jQuery(window).height())){doc.trigger('changeLocation',"#sec10")
+return false;}
+if(Core.state!==undefined&&names[i]!==Core.state)
+doc.trigger('changeLocation',currentLocation=names[i])});jQuery("#main_content > .section-menu").attr("data-scr","nav-scr");var win=jQuery(window),doc=jQuery(document),Core=window.DKCore,scrollHolder=jQuery('[data-scr="nav-scr"]'),map=[],names=[];if(scrollHolder.length!==0){var off=0;scrollHolder.each(function(n){map[n]=jQuery(this).height()+jQuery(this).offset().top-50;off=map[n];var t_href=jQuery(this).attr('data-scroll');if(t_href.indexOf("-")){t_href=t_href.substr(t_href.indexOf("-")+1);}else{t_href="sec1";}
+names[n]="#"+t_href;console.log("listing-names :"+n+":"+names[n]+" cord :"+map[n]);});}
+doc.on('changeLocation',function(e,d){if(d===Core.state)
+return false;else
+Core.state=d;MyGlobal.th.trigger('changeState',Core.state)}).on('click','.navbar-nav li a',function(e){var _this=jQuery(this),href=_this.attr('href');href=href.replace(/^\./,'').replace(Core.basepath,'').replace(Core.urlpath,'');if(href.indexOf("#")=="-1"){doc.trigger('changeLocation',"#sec1")}else{doc.trigger('changeLocation',href)}
+var t_=jQuery(".section-menu[data-scroll='"+Core.state.replace("#","")+"']");jQuery('html, body').animate({scrollTop:t_.offset().top-60},1000);e.preventDefault();});var opt={elementsPath:'>ul>li',activeClass:'active'}
+jQuery('[data-type="navigation"]').each(function(){MyGlobal.th=jQuery(this),data=jQuery.extend({},opt,MyGlobal.th.data('options'));data.elements=jQuery(data.elementsPath,MyGlobal.th);MyGlobal.th.data({navigation:data}).on('changeState',function(e,d){data.elements.each(function(){var th=jQuery(this),a=jQuery('a',th),href2=a.attr('href').replace(/^\./,'').replace(Core.basepath,'').replace(Core.urlpath,'');if(href2.indexOf("#")=="-1"){href2="#src1";}
+if(href2===d)
+th.children("a").parent("li").addClass("active")
+else
+th.children("a").parent("li").removeClass("active")})});});});$(document).on("click",".portfolio-item",function(){var copy=$(this).find(".rex-featured-description").html();var img=$(this).find("img.img-thumbnail").attr("src");$(".rex-modal .rex-modal-figcaption").html(copy);$(".rex-modal .img-responsive").attr("src",img);$(".modal").fadeIn(300,function(){$(".rex-modal").addClass("active");$(".rex-overlay").addClass("active");});});$(document).on("click",".rex-close-modal",function(){var _this=$(this).closest(".modal");_this.fadeOut(300,function(){$(".rex-modal").removeClass("active");$(".rex-overlay").removeClass("active");});});function call_watermark(){var act=$(".ms-page-active");var dact=$(".ms-page-deactive");act.removeClass("ms-page-active").addClass("ms-page-deactive");dact.removeClass("ms-page-deactive").addClass("ms-page-active");setTimeout(function(){call_watermark();},3000);}
+$(document).on("mouseenter",".exp-timeline",function(){$('.exp-timeline').removeClass("timeline-active").addClass("timeline-inactive");$(this).addClass("timeline-active");}).on("mouseleave",".exp-timeline",function(){$('.exp-timeline').removeClass("timeline-active timeline-inactive");$('.exp-timeline:first-child').addClass("timeline-active");});function onElementHeightChange(elm,callback){var lastHeight=elm.height(),newHeight;(function run(){newHeight=elm.height();if(lastHeight!=newHeight)
+callback();lastHeight=newHeight;if(elm.onElementHeightChangeTimer)
+clearTimeout(elm.onElementHeightChangeTimer);elm.onElementHeightChangeTimer=setTimeout(run,200);})();}
